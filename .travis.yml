@@ -1,0 +1,10 @@
+language: csharp
+mono: none
+dotnet: 2.1.502
+solution: Cactus.Blade.Serialization.JSerializer.sln
+install:
+  - dotnet restore
+script:
+  - dotnet msbuild /p:Configuration=Release Cactus.Blade.Serialization.JSerializer.sln
+  - dotnet restore
+  - dotnet test Serialization.JSerializer.Test/Serialization.JSerializer.Test.csproj
