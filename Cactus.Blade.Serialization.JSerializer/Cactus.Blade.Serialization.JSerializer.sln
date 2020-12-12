@@ -7,6 +7,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Src", "Src", "{6A5FD498-A0C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Serialization.JSerializer", "Serialization.JSerializer\Serialization.JSerializer.csproj", "{BEC3B45C-4341-41A4-A51D-9F04BF5BCFE8}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{19CF38C9-DD55-41D0-B9C0-DBF9665935EB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Serialization.JSerializer.Test", "Serialization.JSerializer.Test\Serialization.JSerializer.Test.csproj", "{6AB64E48-7D8A-47E4-94CD-AE7D89FB3813}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,12 +21,17 @@ Global
 		{BEC3B45C-4341-41A4-A51D-9F04BF5BCFE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BEC3B45C-4341-41A4-A51D-9F04BF5BCFE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BEC3B45C-4341-41A4-A51D-9F04BF5BCFE8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6AB64E48-7D8A-47E4-94CD-AE7D89FB3813}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6AB64E48-7D8A-47E4-94CD-AE7D89FB3813}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6AB64E48-7D8A-47E4-94CD-AE7D89FB3813}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6AB64E48-7D8A-47E4-94CD-AE7D89FB3813}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{BEC3B45C-4341-41A4-A51D-9F04BF5BCFE8} = {6A5FD498-A0C3-489B-827E-C0EB5A898CF3}
+		{6AB64E48-7D8A-47E4-94CD-AE7D89FB3813} = {19CF38C9-DD55-41D0-B9C0-DBF9665935EB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {21C10B59-913E-4350-B06D-4325DFB77B7B}
