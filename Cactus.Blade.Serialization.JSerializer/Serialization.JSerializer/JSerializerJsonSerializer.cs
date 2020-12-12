@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Cactus.Blade.Guard;
+using Cactus.Blade.Serialization;
+using System;
 using System.IO;
 using System.Runtime.Serialization.Json;
 using System.Text;
@@ -32,16 +34,13 @@ namespace Serialization.JSerializer
         /// <inheritdoc />
         public void SerializeToStream(Stream stream, object item, Type type)
         {
-            if (stream == null)
-                throw new ArgumentNullException(nameof(stream));
-            if (item == null)
-                throw new ArgumentNullException(nameof(item));
-            if (type == null)
-                throw new ArgumentNullException(nameof(type));
+            Guard.Against.Null(stream, nameof(stream));
+            Guard.Against.Null(item, nameof(item));
+            Guard.Against.Null(type, nameof(type));
 
-            var serializer = Settings == null
-                ? new SystemJson.DataContractJsonSerializer(type)
-                : new SystemJson.DataContractJsonSerializer(type, Settings);
+            var serializer = Settings.IsNull()
+                ? new DataContractJsonSerializer(type)
+                : new DataContractJsonSerializer(type, Settings);
 
             serializer.WriteObject(stream, item);
         }
@@ -49,14 +48,12 @@ namespace Serialization.JSerializer
         /// <inheritdoc />
         public object DeserializeFromStream(Stream stream, Type type)
         {
-            if (stream == null)
-                throw new ArgumentNullException(nameof(stream));
-            if (type == null)
-                throw new ArgumentNullException(nameof(type));
+            Guard.Against.Null(stream, nameof(stream));
+            Guard.Against.Null(type, nameof(type));
 
-            var serializer = Settings == null
-                ? new SystemJson.DataContractJsonSerializer(type)
-                : new SystemJson.DataContractJsonSerializer(type, Settings);
+            var serializer = Settings.IsNull()
+                ? new DataContractJsonSerializer(type)
+                : new DataContractJsonSerializer(type, Settings);
 
             return serializer.ReadObject(stream);
         }
@@ -64,39 +61,33 @@ namespace Serialization.JSerializer
         /// <inheritdoc />
         public string SerializeToString(object item, Type type)
         {
-            if (item == null)
-                throw new ArgumentNullException(nameof(item));
-            if (type == null)
-                throw new ArgumentNullException(nameof(type));
+            Guard.Against.Null(item, nameof(item));
+            Guard.Against.Null(type, nameof(type));
 
-            var serializer = Settings == null
-                ? new SystemJson.DataContractJsonSerializer(type)
-                : new SystemJson.DataContractJsonSerializer(type, Settings);
+            var serializer = Settings.IsNull()
+                ? new DataContractJsonSerializer(type)
+                : new DataContractJsonSerializer(type, Settings);
 
-            using (var stream = new MemoryStream())
-            {
-                serializer.WriteObject(stream, item);
-                stream.Flush();
-                return Encoding.UTF8.GetString(stream.ToArray());
-            }
+            using var stream = new MemoryStream();
+            serializer.WriteObject(stream, item);
+            stream.Flush();
+
+            return Encoding.UTF8.GetString(stream.ToArray());
         }
 
         /// <inheritdoc />
         public object DeserializeFromString(string data, Type type)
         {
-            if (data == null)
-                throw new ArgumentNullException(nameof(data));
-            if (type == null)
-                throw new ArgumentNullException(nameof(type));
+            Guard.Against.Null(data, nameof(data));
+            Guard.Against.Null(type, nameof(type));
 
-            var serializer = Settings == null
-                ? new SystemJson.DataContractJsonSerializer(type)
-                : new SystemJson.DataContractJsonSerializer(type, Settings);
+            var serializer = Settings.IsNull()
+                ? new DataContractJsonSerializer(type)
+                : new DataContractJsonSerializer(type, Settings);
 
-            using (var stream = new MemoryStream(Encoding.UTF8.GetBytes(data)))
-            {
-                return serializer.ReadObject(stream);
-            }
+            using var stream = new MemoryStream(Encoding.UTF8.GetBytes(data));
+
+            return serializer.ReadObject(stream);
         }
     }
 }
