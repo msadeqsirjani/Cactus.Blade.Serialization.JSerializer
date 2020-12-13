@@ -5,7 +5,7 @@
     <AssemblyName>Cactus.Blade.Serialization.JSerializer</AssemblyName>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <Version>1.2.0</Version>
+    <Version>1.2.2</Version>
     <Authors>Mohammad Sadeq Sirjani</Authors>
     <Product>Cactus</Product>
     <Copyright>@CopyRight 2020</Copyright>
@@ -20,7 +20,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Cactus.Blade.Serialization" Version="1.2.0" />
+    <PackageReference Include="Cactus.Blade.Serialization" Version="1.2.2" />
   </ItemGroup>
 
   <ItemGroup>
